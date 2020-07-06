@@ -1,0 +1,38 @@
+// Configures publishing of Maven artifacts to Bintray
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+// ------------- tasks
+
+
+def bintrayUser = keyProperty('BINTRAY_USER')
+def apiKey = keyProperty('BINTRAY_API_KEY')
+bintray {
+    user bintrayUser
+    key apiKey
+    override = true // for multi-platform Kotlin/Native publishing
+    pkg {
+        repo = 'maven'
+        name = 'SecurePrefs'
+        publish = true
+        publicDownloadNumbers = true
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/ATizik-d4l/Secure-Prefs'
+        version {
+            name = "0.3.0-bitcode_6"
+            vcsTag = project.version
+            released  = new Date()
+            vcsTag = this.version
+        }
+    }
+}
+// this is required for K/N publishing
+bintrayUpload.dependsOn publishToMavenLocal
+// This is for easier debugging of bintray uploading problems
+bintrayUpload.doFirst {
+    publications = project.publishing.publications.findAll { !it.name.contains('test') }.collect {
+        println("Uploading artifact '$it.groupId:$it.artifactId:$it.version' from publication '$it.name'")
+        it.name
+    }
+}
+
