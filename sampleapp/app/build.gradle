@@ -54,18 +54,6 @@ kotlin {
                 implementation "com.icecreamhappens.secureprefs:common:$libraryVersion"
             }
         }
-        androidMain {
-            dependencies {
-                implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-                implementation "com.icecreamhappens.secureprefs:android:$libraryVersion"
-            }
-        }
-
-        iosMain {
-            dependencies {
-                implementation "com.icecreamhappens.secureprefs:ios:$libraryVersion"
-            }
-        }
     }
 
     configurations {

@@ -127,10 +127,24 @@ artifacts {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "SecurePrefs"
+            url = uri("https://maven.pkg.github.com/gesundheitscloud/Secure-Prefs")
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.key")
+            }
+        }
+    }
     publications {
         kotlinMultiplatform {
             artifactId = "common"
         }
+        gpr(MavenPublication) {
+            from(components.kotlin)
+        }
     }
 }
+
 

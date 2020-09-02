@@ -5,8 +5,8 @@ apply plugin: 'com.jfrog.bintray'
 // ------------- tasks
 
 
-def bintrayUser = keyProperty('BINTRAY_USER')
-def apiKey = keyProperty('BINTRAY_API_KEY')
+def bintrayUser = project.findProperty('BintrayUser')
+def apiKey = project.findProperty('BintrayApiKey')
 bintray {
     user bintrayUser
     key apiKey
@@ -19,7 +19,7 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/ATizik-d4l/Secure-Prefs'
         version {
-            name = "0.3.0-bitcode_6"
+            name = "0.4.0"
             vcsTag = project.version
             released  = new Date()
             vcsTag = this.version
