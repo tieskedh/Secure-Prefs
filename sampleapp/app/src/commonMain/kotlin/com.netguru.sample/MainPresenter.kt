@@ -1,5 +1,5 @@
 package com.netguru.sample
-import com.icecreamhappens.secureprefs.Kissme
+import com.icecreamhappens.secureprefs.*
 
 class MainPresenter {
 
@@ -8,7 +8,7 @@ class MainPresenter {
     private val toDoList = mutableListOf<String>()
 
     private val storage by lazy {
-        Kissme()
+        SecurePrefs()
     }
 
     fun attachView(view: MainView) {
