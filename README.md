@@ -27,7 +27,7 @@ Then add following dependencies to the common module build.gradle:
     sourceSets {
         commonMain {
             dependencies {
-                implementation 'com.icecreamhappens.secureprefs:common:0.3.0'     
+                implementation 'com.icecreamhappens.secureprefs:common:0.4.0'     
             }
         }
     }
